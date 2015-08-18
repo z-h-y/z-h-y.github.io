@@ -1,7 +1,111 @@
-<html><head>
-	<title>personal page</title>
-<style type="text/css" style="display: none !important;">object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid$=":d27cdb6e-ae6d-11cf-96b8-444553540000"],object[codebase*="swflash.cab"],object[data*=".swf"],embed[type="application/x-shockwave-flash"],embed[src*=".swf"],object[type="application/x-shockwave-flash"],object[src*=".swf"],object[codetype="application/x-shockwave-flash"],iframe[type="application/x-shockwave-flash"],object[classid$=":166B1BCA-3F9C-11CF-8075-444553540000"],object[codebase*="sw.cab"],object[data*=".dcr"],embed[type="application/x-director"],embed[src*=".dcr"],object[type="application/x-director"],object[src*=".dcr"],object[classid$=":15B782AF-55D8-11D1-B477-006097098764"],object[codebase*="awswaxf.cab"],object[data*=".aam"],embed[type="application/x-authorware-map"],embed[src*=".aam"],object[type="application/x-authorware-map"],object[src*=".aam"],object[classid*="32C73088-76AE-40F7-AC40-81F62CB2C1DA"],object[type="application/ag-plugin"],object[type="application/x-silverlight"],object[type="application/x-silverlight-2"],object[source*=".xaml"],object[sourceelement*="xaml"],embed[type="application/ag-plugin"],embed[source*=".xaml"]{display: none !important;}</style></head>
-<body>
-	<div>Hello World.</div>
-
-</body></html>
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; float: left;width: 70%;}
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+      #userName {padding: 10px;}
+      #userName span {font-weight: bold;font-size: 16px;}
+      #userName a {text-decoration: none;margin:0 15px;}
+      #userName i {font-style: normal;color: red;}
+      .room {float: right;width: 30%;}
+      #guestList { list-style-type: none; margin: 0; padding: 0;}
+      .cf:before, .cf:after {
+        display: table;
+        content: '';
+      }
+      .cf:after {clear: both;}
+      .cf {zoom: 1;}
+    </style>
+  </head>
+  <body>
+    <p id="userName">
+      <span>***</span>
+      <a class="changeName" href="javascript:void(0);">changeName</a>
+      <a class="join" href="javascript:void(0);">join room</a>
+      <i></i>
+    </p>
+    <div class="cf">
+      <ul id="messages"></ul>
+      <div class="room">
+        <h2>room</h2>
+        <ul id="guestList"></ul>
+      </div>     
+    </div>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+  var socket = io(); 
+  var room;
+  socket.on('nameResult', function(msg){
+    $('#userName span').text(msg.name);
+  });
+  socket.on('leaveGuest', function(msg){
+    $('#guestList li').each(function() {
+      if($(this).text() == msg) {
+        $(this).remove();
+        return false;
+      }
+    });
+  });
+  socket.on('changName', function(msg){
+    $('#guestList li').each(function() {
+      if($(this).text() == msg.previousName) {
+        $(this).text(msg.name);
+        return false;
+      }
+    });
+  });
+  socket.on('currentGuests', function(msg){
+    if(msg.room == room) {
+      $('#guestList').empty();
+      for(var i = 0; i < msg.currentGuests.length; i++){
+        $('#guestList').append($('<li>').text(msg.currentGuests[i]));
+      }
+    }
+    
+  });
+  socket.on('joinResult', function(msg){
+    room = msg.room;
+    $('.room h2').text(msg.room);
+  });
+  $('#userName .changeName').click(function(event) {
+    /* Act on the event */
+    $('#userName i').text('');
+    socket.emit('nameAttempt', $('#m').val());
+    socket.on('nameResult', function(msg){
+      $('#userName i').text(msg.message);
+    });
+    $('#m').val('');
+  });
+  $('#userName .join').click(function(event) {
+    /* Act on the event */
+    $('#userName i').text('');
+    socket.emit('join', $('#m').val());
+    $('#m').val('');
+  });
+  $('form').submit(function(){
+    $('#userName i').text('');
+    socket.emit('chat message', {
+      text: $('#m').val(),
+      room: room
+    });
+    $('#m').val('');
+    return false;
+  });
+  socket.on('chat message', function(msg){
+    $('#messages').append($('<li>').text(msg));
+  });
+</script>
+  </body>
+</html>
