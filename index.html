@@ -1,22 +1,59 @@
 <!doctype html>
 <html>
-  <head>
-  	<meta charset="utf-8">
-  	<meta name="keywords" content="z-h-y,z-h-y.github.io">
-  	<meta name="description" content="my website test">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="z-h-y,z-h-y.github.io">
+    <meta name="description" content="my website test">
     <title>z-h-y</title>
     <link rel="stylesheet" type="text/css" href="public/css/default.css">
-  </head>
+    <link rel="stylesheet" type="text/css" href="public/css/page.css">
+</head>
   
-  <body>
-    <p>Hello World!</p>
-    <a href="">
-    	<img src="public/img/logo-nodejs.png" alt="" />
-    </a>
+<body>
+    <div class="header">
+        <div class="container site-nav cf">
+            <div class="logo fl">
+                <a href="/">z-h-y</a>
+            </div>
+            <ul class="cf fl">
+                <li><a href="/">home</a></li>
+                <li><a href="/">link</a></li>
+            </ul>
+        </div>
+        <h1>Hello World!</h1>
+    </div>
+    <div class="container cf">
+        <div class="pageside">
+            <ul>
+                <li class="active"><a href="javascript:void(0);">All</a></li>
+                <li><a href="javascript:void(0);">Node.js</a></li>
+                <li><a href="javascript:void(0);">JQuery</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="codelist">
+                <h2>Node.js</h2>
+                <ul>
+                    <li><a href="https://github.com/z-h-y/z-h-y.github.io/tree/master/code-language/nodejs">项目代码</a></li>
+                </ul>
+                <a class="codelogo" href="https://nodejs.org/" target="_blank">
+                    <img src="public/img/logo-nodejs.png" alt="" />
+                </a>
+            </div>  
+            <div class="codelist">
+                <h2>JQuery</h2>
+                <a class="codelogo" href="http://jquery.com/" target="_blank">
+                    <img src="public/img/logo-jquery.jpg" alt="" />
+                </a>
+            </div> 
+        </div>
+    </div>
+
     <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
     <script>
-        // Fallback to loading jQuery from a local path if the CDN is unavailable
+    // Fallback to loading jQuery from a local path if the CDN is unavailable
         (window.jQuery || document.write('<script src="public/javascript/jquery-1.9.0.min.js"><\/script>'));
     </script>
-  </body>
+    <script type="text/javascript" src="public/javascript/page.js"></script>
+</body>
 </html>

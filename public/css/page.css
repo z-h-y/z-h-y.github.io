@@ -1,0 +1,79 @@
+/*header*/
+.site-nav {
+	padding: 15px 0;
+	font-size: 30px;
+	line-height: 30px;
+}
+.site-nav ul {
+	margin-left: 20px;
+}
+.site-nav li {
+	float: left;
+	margin: 0 10px;
+}
+.site-nav li a {
+	font-size: 24px;
+	color: #666666;
+}
+.site-nav a:hover {
+	color: #333;
+	text-decoration: none;
+}
+h1 {
+	font-size: 24px;
+	text-align: center;
+    background-color: #2e9fff;
+    color: white;
+    padding: 20px;
+}
+.header {
+	margin-bottom: 15px;
+}
+/*container*/
+.container {
+	margin: 0 15px;
+}
+.pageside {
+	float: left;
+	width: 200px;
+	text-align: center;
+	background-color: #eff3fa;
+    border: 1px solid #D4D4D4;
+}
+.pageside li {
+	padding: 10px 0;
+	font-size: 20px;
+    border-bottom: 1px solid #D4D4D4;
+}
+.pageside li a {
+	color: #999;
+} 
+.pageside li a:hover {
+	color: #333;
+	text-decoration: none;
+} 
+.pageside .active {
+	background-color: #2e9fff;
+}
+.pageside .active a {
+	color: white;
+}
+/*content*/
+.content {
+	margin-left: 215px;
+    padding: 15px;
+    background-color: #eff3fa;
+}
+h2 {
+	font-size: 20px;
+	border-bottom: 1px solid #A9A9A9;
+	margin: 15px 0;
+    line-height: 1.5;
+}
+.codelogo {
+	display: block;
+	text-align: center;
+}
+.codelogo img {
+	max-height: 100px;
+}
