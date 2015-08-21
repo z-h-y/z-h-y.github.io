@@ -17,7 +17,6 @@
 }
 .site-nav a:hover {
 	color: #333;
-	text-decoration: none;
 }
 h1 {
 	font-size: 24px;
@@ -50,7 +49,6 @@ h1 {
 } 
 .pageside li a:hover {
 	color: #333;
-	text-decoration: none;
 } 
 .pageside .active {
 	background-color: #2e9fff;
