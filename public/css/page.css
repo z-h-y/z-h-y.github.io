@@ -9,6 +9,7 @@
 }
 .site-nav li {
 	float: left;
+	display: inline;
 	margin: 0 10px;
 }
 .site-nav li a {
