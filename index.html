@@ -16,9 +16,9 @@
                 <a href="/">z-h-y</a>
             </div>
             <ul class="cf fl">
-                <li><a href="/">home</a></li>
-                <li><a href="/">link</a></li>
-                <li><a href="/">test</a></li>
+                <li><a href="/" onclick="_gaq.push(['_trackEvent', 'link', 'go to home', 'home']);">home</a></li>
+                <li><a href="/" onclick="_gaq.push(['_trackEvent', 'link', 'go to link', 'link']);">link</a></li>
+                <li><a href="/" onclick="_gaq.push(['_trackEvent', 'link', 'go to test', 'test']);">test</a></li>
             </ul>
         </div>
         <h1>Hello World!</h1>
@@ -26,24 +26,24 @@
     <div class="container cf">
         <div class="pageside">
             <ul>
-                <li class="active"><a href="javascript:void(0);">All</a></li>
-                <li><a href="javascript:void(0);">Node.js</a></li>
-                <li><a href="javascript:void(0);">JQuery</a></li>
+                <li class="active"><a href="javascript:void(0);" onclick="_gaq.push(['_trackEvent', 'changeTab', 'change to All', 'all']);">All</a></li>
+                <li><a href="javascript:void(0);" onclick="_gaq.push(['_trackEvent', 'changeTab', 'change to Node.js', 'Node.js']);">Node.js</a></li>
+                <li><a href="javascript:void(0);" onclick="_gaq.push(['_trackEvent', 'changeTab', 'change to JQuery', 'JQuery']);">JQuery</a></li>
             </ul>
         </div>
         <div class="content">
             <div class="codelist">
                 <h2>Node.js</h2>
                 <ul>
-                    <li><a href="https://github.com/z-h-y/z-h-y.github.io/tree/master/code-language/nodejs">项目代码</a></li>
+                    <li><a href="https://github.com/z-h-y/z-h-y.github.io/tree/master/code-language/nodejs" onclick="_gaq.push(['_trackEvent', 'link', 'go to github', 'github']);">项目代码</a></li>
                 </ul>
-                <a class="codelogo" href="https://nodejs.org/" target="_blank">
+                <a class="codelogo" href="https://nodejs.org/" target="_blank" onclick="_gaq.push(['_trackEvent', 'link', 'go to nodejs', 'nodejs']);">
                     <img src="public/img/logo-nodejs.png" alt="" />
                 </a>
             </div>  
             <div class="codelist">
                 <h2>JQuery</h2>
-                <a class="codelogo" href="http://jquery.com/" target="_blank">
+                <a class="codelogo" href="http://jquery.com/" target="_blank" onclick="_gaq.push(['_trackEvent', 'link', 'go to jquery', 'jquery']);">
                     <img src="public/img/logo-jquery.jpg" alt="" />
                 </a>
             </div> 
